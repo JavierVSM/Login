@@ -5,52 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='./css/styles.css') }}"/>
 
 </head>
 <body>
-    <div class="contenedor">
-        <div>
-            <h1 class="my-4 text-info">Register</h1>
-            <form action="/add_user" method="POST">
-                <div>
-                    <label for="firstName">First Name:</label>
-                    <input name="firstName" id="firstName" type="text">
-                </div>
-                <div>
-                    <label for="secondName">Second Name:</label>
-                    <input name="secondName" id="secondName" type="text">
-                </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input name="email" id="email" type="email">
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input name="password" id="password" type="password">
-                </div>
-                <div class="mb-3">
-                    <label for="doblePassword">Confirm Password:</label>
-                    <input name="doblepassword" id="doblepassword" type="password">
-                </div>
-                <button type="submit">Register</button>
-            </form>   
-        </div>
-        <div>
-            <h1>Login</h1>
-            <form action="/authentication" method="POST">
-                <div>
-                    <label for="email">Email:</label>
-                    <input name="email" id="email" type="email">
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input name="password" id="password" type="password">
-                </div>
-                <button type="submit" value="create answer">Login</button>
-            </form>
+    <div>
+        {% with messages = get_flashed_messages() %}     
+            {% if messages %}                            
+                {% for message in messages %}            
+                <p class="alert alert-danger">{{message}}</p>                  
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Register</h1>
+                <form action="/new_user" method="POST">
+                    <div>
+                        <label for="fName">First Name:</label>
+                        <input name="fName" id="fName" type="text">
+                    </div>
+                    <div>
+                        <label for="lName">Second Name:</label>
+                        <input name="lName" id="lName" type="text">
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input name="email" id="email" type="text">
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input name="password" id="password" type="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="doblePassword">Confirm Password:</label>
+                        <input name="doblepassword" id="doblepassword" type="password">
+                    </div>
+                    <button type="submit">Register</button>
+                </form>   
+            </div>
+            <div class="col-sm">
+                <h1>Login</h1>
+                <form action="/authentication" method="POST">
+                    <div>
+                        <label for="email">Email:</label>
+                        <input name="email" id="email" type="email">
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input name="password" id="password" type="password">
+                    </div>
+                    <button type="submit" value="create answer">Login</button>
+                </form>
+            </div>
         </div>
     </div>    
 </body>
 </html>
-
